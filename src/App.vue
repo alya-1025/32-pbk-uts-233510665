@@ -37,6 +37,11 @@ const filterTugasList = computed(() => {
     <h1>Daftar Tugas Kuliah</h1>
     <input type="text" v-model="inputTugas" @keyup.enter="tambahTugas" placeholder="Tambah tugas baru">
     <button @click="tambahTugas">Tambah</button>
+    <div>
+      <button @click="filterTugas = 'semua'">Semua</button>
+      <button @click="filterTugas = 'selesai'">Selesai</button>
+      <button @click="filterTugas = 'belum-selesai'">Belum Selesai</button>
+    </div>
 
     <ul>
       <li v-for="tugas in filterTugasList" :key="tugas.id">
