@@ -22,6 +22,12 @@ const tambahTugas = () => {
     <h1>Daftar Tugas Kuliah</h1>
     <input type="text" v-model="inputTugas" @keyup.enter="tambahTugas" placeholder="Tambah tugas baru">
     <button @click="tambahTugas">Tambah</button>
+
+    <ul>
+      <li v-for="tugas in listTugas" :key="tugas.id">
+        {{ tugas.nama }} - {{ tugas.status }}
+      </li>
+    </ul>
   </div>
 </template>
 
