@@ -1,8 +1,9 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, computed } from 'vue'
 
 const listTugas = ref([])
 const inputTugas = ref('')
+const filterTugas = ref('semua')
 
 const tambahTugas = () => {
   if (inputTugas.value.trim() !== '') {
@@ -19,6 +20,16 @@ function hapusTugas(id) {
   listTugas.value = listTugas.value.filter(tugas => tugas.id !== id)
 }
 
+const filterTugasList = computed(() => {
+  if (filterTugas.value === 'semua') {
+    return listTugas.value
+  } else if (filterTugas.value === 'selesai') {
+    return listTugas.value.filter(tugas => tugas.status === 'Selesai')
+  } else if (filterTugas.value === 'belum-selesai') {
+    return listTugas.value.filter(tugas => tugas.status === 'Belum Selesai')
+  }
+})
+
 </script>
 
 <template>
@@ -28,7 +39,7 @@ function hapusTugas(id) {
     <button @click="tambahTugas">Tambah</button>
 
     <ul>
-      <li v-for="tugas in listTugas" :key="tugas.id">
+      <li v-for="tugas in filterTugasList" :key="tugas.id">
         {{ tugas.nama }} - {{ tugas.status }}
         <button @click="hapusTugas(tugas.id)">Hapus</button>
       </li>
