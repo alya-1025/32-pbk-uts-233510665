@@ -24,9 +24,9 @@ const filterTugasList = computed(() => {
   if (filterTugas.value === 'semua') {
     return listTugas.value
   } else if (filterTugas.value === 'selesai') {
-    return listTugas.value.filter(tugas => tugas.status === 'Selesai')
+    return listTugas.value.filter(tugas => tugas.status)
   } else if (filterTugas.value === 'belum-selesai') {
-    return listTugas.value.filter(tugas => tugas.status === 'Belum Selesai')
+    return listTugas.value.filter(tugas => !tugas.status)
   }
 })
 
