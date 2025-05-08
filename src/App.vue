@@ -15,6 +15,10 @@ const tambahTugas = () => {
   }
 }
 
+function hapusTugas(id) {
+  listTugas.value = listTugas.value.filter(tugas => tugas.id !== id)
+}
+
 </script>
 
 <template>
@@ -26,11 +30,10 @@ const tambahTugas = () => {
     <ul>
       <li v-for="tugas in listTugas" :key="tugas.id">
         {{ tugas.nama }} - {{ tugas.status }}
+        <button @click="hapusTugas(tugas.id)">Hapus</button>
       </li>
     </ul>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
