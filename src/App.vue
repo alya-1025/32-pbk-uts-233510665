@@ -10,7 +10,7 @@ const tambahTugas = () => {
     listTugas.value.push({
       id: listTugas.value.length + 1,
       nama: inputTugas.value,
-      status: 'Belum Selesai'
+      status: false
     })
     inputTugas.value = ''
   }
@@ -45,6 +45,7 @@ const filterTugasList = computed(() => {
 
     <ul>
       <li v-for="tugas in filterTugasList" :key="tugas.id">
+        <input type="checkbox" v-model="tugas.status">
         {{ tugas.nama }} - {{ tugas.status }}
         <button @click="hapusTugas(tugas.id)">Hapus</button>
       </li>
